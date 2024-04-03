@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IdSharp.Common.Utils;
+using IdSharp.Tagging.ID3v1;
+using IdSharp.Tagging.ID3v2;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,6 +38,26 @@ namespace BehAudio
                     if (f.EndsWith("m3u") | f.EndsWith("mp3") | f.EndsWith("wav") | f.EndsWith("wma"))
                     {
                         listBoxFiles.Items.Add(file);
+
+                        if (ID3v2Tag.DoesTagExist(file))
+                        {
+                            IID3v2Tag id3v2 = new ID3v2Tag(file);
+
+                            listBoxFiles.Items.Add("  - TagVersion: " + EnumUtils.GetDescription(id3v2.Header.TagVersion));
+                            listBoxFiles.Items.Add(string.Format("  - Artist: {0}", id3v2.Artist));
+                            listBoxFiles.Items.Add(string.Format("  - Title: {0}", id3v2.Title));
+                            listBoxFiles.Items.Add(string.Format("  - Album: {0}", id3v2.Album));
+                            listBoxFiles.Items.Add(string.Format("  - Pictures: {0}", id3v2.PictureList.Count));
+                        }
+                        else if (ID3v1Tag.DoesTagExist(file))
+                        {
+                            IID3v1Tag id3v1 = new ID3v1Tag(file);
+
+                            listBoxFiles.Items.Add("  - TagVersion: " + EnumUtils.GetDescription(id3v1.TagVersion));
+                            listBoxFiles.Items.Add(string.Format("  - Artist: {0}", id3v1.Artist));
+                            listBoxFiles.Items.Add(string.Format("  - Title: {0}", id3v1.Title));
+                            listBoxFiles.Items.Add(string.Format("  - Album: {0}", id3v1.Album));
+                        }
                     }
                     else
                     {
