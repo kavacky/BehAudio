@@ -31,9 +31,6 @@ namespace BehAudio
             {
                 foreach (string file in System.IO.Directory.EnumerateFiles("F:/", "*.*", SearchOption.AllDirectories))
                 {
-                    listBoxFiles.Items.Add(file);
-                    Console.WriteLine(file);
-
                     string f = file.ToLower();
                     if (f.EndsWith("m3u") | f.EndsWith("mp3") | f.EndsWith("wav") | f.EndsWith("wma"))
                     {
