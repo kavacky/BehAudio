@@ -33,6 +33,16 @@ namespace BehAudio
                 {
                     listBoxFiles.Items.Add(file);
                     Console.WriteLine(file);
+
+                    string f = file.ToLower();
+                    if (f.EndsWith("m3u") | f.EndsWith("mp3") | f.EndsWith("wav") | f.EndsWith("wma"))
+                    {
+                        listBoxFiles.Items.Add(file);
+                    }
+                    else
+                    {
+                        listBoxFiles.Items.Add("UNSUPPORTED TYPE - " + file);
+                    }
                 }
             }
             catch (Exception ex)
