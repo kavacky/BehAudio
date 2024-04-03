@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             this.listBoxFiles = new System.Windows.Forms.ListBox();
             this.buttonLoad = new System.Windows.Forms.Button();
             this.richTextBoxDetails = new System.Windows.Forms.RichTextBox();
@@ -68,6 +69,7 @@
             this.Controls.Add(this.richTextBoxDetails);
             this.Controls.Add(this.buttonLoad);
             this.Controls.Add(this.listBoxFiles);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "formMain";
             this.Text = "BehAudio";
             this.ResumeLayout(false);
