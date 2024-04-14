@@ -67,6 +67,7 @@ namespace BehAudio
             }
             catch (Exception ex)
             {
+                listBoxFiles.Items.Add("EXCEPTION - " + ex.Message.ToString());
                 richTextBoxDetails.Text = richTextBoxDetails.Text + "\r\n" + "EXCEPTION: " + ex.ToString();
                 Console.WriteLine(ex.ToString());
             }
