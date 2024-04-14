@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace BehAudio
 {
@@ -24,6 +25,12 @@ namespace BehAudio
         private void listBoxFiles_SelectedIndexChanged(object sender, EventArgs e)
         {
             richTextBoxDetails.Text = listBoxFiles.SelectedIndex.ToString() + " - " + listBoxFiles.SelectedItem.ToString();
+
+            WindowsMediaPlayer player = new WindowsMediaPlayer
+            {
+                URL = listBoxFiles.SelectedItem.ToString()
+            };
+            player.controls.play();
         }
 
         private void buttonLoad_Click(object sender, EventArgs e)
